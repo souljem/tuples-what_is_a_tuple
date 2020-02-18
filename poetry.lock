@@ -1,0 +1,14 @@
+[[package]]
+category = "main"
+description = "Counter package defines the \"counter.Counter\" class similar to bags or multisets in other languages."
+name = "counter"
+optional = false
+python-versions = "*"
+version = "1.0.0"
+
+[metadata]
+content-hash = "81321788ef3f05ca92c0c7d253cf2723fd393f9d18c924a438852613a14b3079"
+python-versions = "^3.7"
+
+[metadata.hashes]
+counter = ["9e008590e360936a66c98e1a01e7a9a0ecf6af19cc588107121f5fb4613bb60c"]
