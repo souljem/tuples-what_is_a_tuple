@@ -2,7 +2,7 @@ import math
 import random
 from collections import Counter
 import numpy as np
-
+#hello
 '''
 text = "number please"
 n = int(input(text))
