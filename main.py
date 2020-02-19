@@ -42,28 +42,45 @@ def rec (x):
   return summ
 #print(rec(191))
 
-
+# Tthe trick of the recursion here is actually to run the function on the function.
 def t(x):
   print(x)
   if x < 1:
-    return 0
-  elif x % 10 + t(x // 10) > 10:
-    return ((x % 10 + t(x // 10)) % 10) + (x % 10 + t(x // 10))//10
+    return 0  
   else:
     #return x 
     return x % 10 + t(x // 10) 
   
 def rangey (low, high):
+  temp = 0
   result = {}
+  values = []
   for x in range(low, high):
-    temp = t(x)
-    if result.keys() == temp:
-      print("nope")
-    
+    result[t(x)] = 1
+    values.append(t(x))
+  print(values)
+  for x in values:
+    if result[x] and x < 10:
+      result[x] += 1
+# getting the correct amount in values 
+  for u in result.keys():
+    #print("bortols! ", u)
+    print(result[u])
+    if u > 10:
+      result[t(u)] += 1
+
+      #print("new bortols ", result)
+  return result 
+'''      
+      if result[u] in result.values():
+        result[u] += 1
+'''
+  
+  
 
 
-print(t(494))
-#rangey(191, 199)
+#print(t(t(494)))
+print(rangey(191, 309))
 #print(t(24))
 
 '''
