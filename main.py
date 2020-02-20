@@ -43,34 +43,48 @@ def rec (x):
 #print(rec(191))
 
 # Tthe trick of the recursion here is actually to run the function on the function.
-def t(x):
-  print(x)
+def rec_dig_sum(x):
+  #print(x)
   if x < 1:
     return 0  
   else:
     #return x 
-    return x % 10 + t(x // 10) 
+    return x % 10 + t(x // 10)
   
-def rangey (low, high):
+def distr_of_rec_digit_sums (low, high):
   temp = 0
   result = {}
   values = []
   for x in range(low, high):
-    result[t(x)] = 1
-    values.append(t(x))
-  print(values)
+    result[rec_dig_sum(x)] = 1
+    values.append(rec_dig_sum(x))
+  #print("all the values\n ", values)
+  #print("first dictionary\n" , result, "\n")
+
+  #print("top", max(values))
+  #START HERE !!!!!
+  #max_values = max(values)
   for x in values:
-    if result[x] and x < 10:
-      result[x] += 1
-# getting the correct amount in values 
-  for u in result.keys():
+    if x > 10:
+      result[rec_dig_sum(x)] += 1
+      result[x] -= 1
+      #print( x, " should be one higher")
+    
+      #print(x, " Is less than 10")
+  
+    
+
+  for u in list(result):
     #print("bortols! ", u)
-    print(result[u])
+    #print("the value of ", u, " is ", result[u])
     if u > 10:
-      result[t(u)] += 1
+      result.pop(u) 
+      #print("the value of ", u, " is ", result[t(u)])
 
       #print("new bortols ", result)
-  return result 
+  return result
+'''
+''' 
 '''      
       if result[u] in result.values():
         result[u] += 1
@@ -80,7 +94,7 @@ def rangey (low, high):
 
 
 #print(t(t(494)))
-print(rangey(191, 309))
+print(distr_of_rec_digit_sums(191, 309))
 #print(t(24))
 
 '''
