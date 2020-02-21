@@ -44,45 +44,70 @@ def rec (x):
 
 # Tthe trick of the recursion here is actually to run the function on the function.
 def rec_dig_sum(x):
-  #print(x)
   if x < 1:
-    return 0  
-  else:
-    #return x 
-    return x % 10 + t(x // 10)
+    return 0
+  elif x > 9:
+    return rec_dig_sum(x % 10 + rec_dig_sum(x // 10))
+  else: 
+    return x % 10 + rec_dig_sum(x // 10)
   
 def distr_of_rec_digit_sums (low, high):
   temp = 0
   result = {}
   values = []
   for x in range(low, high):
-    result[rec_dig_sum(x)] = 1
-    values.append(rec_dig_sum(x))
-  #print("all the values\n ", values)
-  #print("first dictionary\n" , result, "\n")
+    exists = rec_dig_sum(x)
+    result[exists] = result.get(exists, 0) + 1
+  print (result)
+  return result
 
-  #print("top", max(values))
-  #START HERE !!!!!
-  #max_values = max(values)
+
+#print(distr_of_rec_digit_sums(167, 210))
+print(rec_dig_sum(166))
+
+'''    
+    exists = rec_dig_sum(x)
+    if exists in result.keys():
+      
+      print("hotel")
+    else:
+      #result[exists] = 1
+      print("not here ")
+  print("Farts",result)
+'''
+  
+
+'''    
+    if rec_dig_sum(x) < 10:
+      result[rec_dig_sum(x)] = 1
+    elif rec_dig_sum(x) >= 10:
+      result[rec_dig_sum(rec_dig_sum(x))] = 1
+    else:
+      result[rec_dig_sum(rec_dig_sum(rec_dig_sum(x)))] = 1
+
+
+  
+      
+      
+
+    values.append(rec_dig_sum(x))
+  print("you", len(result.keys()))
   for x in values:
     if x > 10:
       result[rec_dig_sum(x)] += 1
-      result[x] -= 1
-      #print( x, " should be one higher")
-    
-      #print(x, " Is less than 10")
-  
-    
-
+      
+        
   for u in list(result):
-    #print("bortols! ", u)
-    #print("the value of ", u, " is ", result[u])
-    if u > 10:
+    if u > 9:
       result.pop(u) 
-      #print("the value of ", u, " is ", result[t(u)])
 
-      #print("new bortols ", result)
-  return result
+'''
+  
+
+
+  
+
+
 '''
 ''' 
 '''      
@@ -93,8 +118,8 @@ def distr_of_rec_digit_sums (low, high):
   
 
 
-#print(t(t(494)))
-print(distr_of_rec_digit_sums(191, 309))
+#print(rec_dig_sum(167))
+#print(distr_of_rec_digit_sums(167, 210))
 #print(t(24))
 
 '''
